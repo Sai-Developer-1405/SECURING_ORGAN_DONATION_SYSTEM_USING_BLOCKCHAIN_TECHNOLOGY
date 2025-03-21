@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>OrganDonation</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
+    rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'donor/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/css/style.css' %}" rel="stylesheet">
+    
+    <style>
+        
+        .equal-height {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .equal-height h1 {
+            flex-grow: 1;
+        }
+        
+        .equal-height p {
+            flex-grow: 2;
+        }
+        
+        .form-control{
+            
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+</div>
+<!-- Spinner End -->
+
+
+
+<!-- Brand Start -->
+<div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
+    <div class="container pb-2">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex">
+                <i class="bi bi-hospital fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Recipient Dashboard</h5>
+                    <span>Welcome, Recipient</span>
+                </div>
+            </div>
+            <a href="" class="h1 text-white mb-0">Organ<span class="text-dark">Donation</span></a>
+            <div class="d-flex">
+                <i class="bi bi-people-fill fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Find Your Donor</h5>
+                    <span>Connect with your life-saving match</span>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<!-- Brand End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
+            <a href="index.html" class="navbar-brand d-lg-none">
+                <h1 class="text-primary m-0">Lab<span class="text-dark">sky</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="{% url 'recipient_dashboard' %}" class="nav-item nav-link ">Dashboard</a>
+                <a href="{% url 'recipient_form' %}" class="nav-item nav-link active"> Organs(Donor) Request </a>
+                <a href="{% url 'recipient_status' %}" class="nav-item nav-link ">Status</a>
+            </div>
+            <div class="ms-auto d-none d-lg-flex">
+                <a class="btn btn-lg btn-danger ms-2" href="{% url 'recipient_logout' %}" >
+                    Log out
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+</div>
+<!-- Navbar End -->
+<div class="container-fluid pb-5">
+    <div class="container">
+        <div class="col-12">
+            <h1 class="btn pull-right text-white col-12 my-4 p-3 fw-bolder" style="background-color: #3368c6; font-size: 32px;">Request Form </h1>
+            
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6  align-items-center justify-content-center">
+                    <img src="{% static 'donor/img/recipient.jpeg' %}" alt="" class="img-fluid" >
+                </div>
+                <div class="col-md-6  p-5" style="background-color: #3368c6; border-radius: 20px; box-shadow: 0 5px 10px grey; transition: all 0.4s ease;" 
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='4px 10px 12px rgba(0,0,0,0.5)'; this.style.borderRadius='20px'; this.style.zIndex='99999'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0px 4px 10px rgba(0,0,0,0.5)';" >
+                <form action="" method="POST" class="form-box" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h2 class="text-white mb-4">Organ Request Form</h2>
+                    <!-- Personal Information -->
+                    <div class="form-group mb-4 col-10">
+                        <input type="text" class="form-control" placeholder="Full Name" name="full_name" required>
+                    </div>
+                    <div class="form-group mb-4 col-10">
+                        <input type="text" class="form-control" placeholder="Email Address" name="email" required>
+                    </div>
+                    <div class="form-group mb-4 col-10">
+                        <input type="tel" class="form-control" placeholder="Phone Number" name="phone" required>
+                    </div>
+                    <!-- Medical Details -->
+                    <div class="form-group mb-4 col-10">
+                        <label for="organNeeded" class="form-label text-white">Organ Needed:</label>
+                        <select id="organNeeded" class="form-control" name="organ_needed" required multiple>
+                            <option value="">Select Organ(s)</option>
+                            <option value="kidney">Kidney</option>
+                            <option value="heart">Heart</option>
+                            <option value="liver">Liver</option>
+                            <option value="lungs">Lungs</option>
+                            <option value="pancreas">Pancreas</option>
+                            <option value="eyes">Eyes</option>
+                            <option value="brain">Brain</option>
+                            <option value="skin">Skin</option>
+                            <option value="bones">Bones</option>
+                            <option value="intestines">Intestines</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-4 col-10">
+                        <label for="urgencyLevel" class="form-label text-white">Urgency Level:</label>
+                        <select id="urgencyLevel" class="form-control" name="urgency_level" required>
+                            <option value="">Select Urgency</option>
+                            <option value="high">High - Immediate</option>
+                            <option value="medium">Medium - Within 6 months</option>
+                            <option value="low">Low - Routine</option>
+                        </select>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button class="btn btn-danger btn-pill col-md-10 justify-content-center text fw-bold" type="submit">Submit Request</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Footer Start -->
+<div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-5 py-5">
+            <div class="col-lg-6 pe-lg-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="h1 text-primary mb-0">Life<span class="text-white">Link</span></h1>
+                </a>
+                <p><i class="fa fa-map-marker-alt me-2"></i> #2nd Floor, Siris Rd, Near L.B Nagar Metro Station Pillar No, A1662, Snehapuri Colony, Hyderabad, Telangana 500074</p>
+                <p><i class="fa fa-phone-alt me-2"></i>85558 87986</p>
+                <p><i class="fa fa-envelope me-2"></i>info@codebook.in</p>
+                <div class="d-flex mt-4">
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 ps-lg-5">
+                <div class="row g-5 justify-content-center">
+                    <div class="text-center">
+                        <h4 class="text-light mb-4">Quick Links</h4>
+                        <a class="btn btn-link" href="">Dashboard</a>
+                        <a class="btn btn-link" href="">Organs (Donor) Request</a>
+                        <a class="btn btn-link" href="">Status</a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright bg-dark text-white-50 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">&copy; <a href="#">LifeLink</a>. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed and <a href="https://codebook.in"></a><br>Distributed by <a href="https://codebook.in" target="_blank">codebook</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'donor/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'donor/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'donor/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'donor/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'donor/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'donor/js/main.js' %}"></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+    swal({
+        title: "Warning!",
+        text: "{{ message }}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+    swal({
+        title: "Info :)",
+        text: "{{ message }}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+    swal({
+        title: "Error!",
+        text: "{{ message }}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+    swal({
+        title: "Success!",
+        text: "{{ message }}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>

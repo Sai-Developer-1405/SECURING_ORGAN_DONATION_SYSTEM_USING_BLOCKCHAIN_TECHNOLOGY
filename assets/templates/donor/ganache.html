@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>OrganDonation</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
+    rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'donor/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/css/style.css' %}" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .eth-transaction-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px auto;
+        }
+        .eth-transaction-title {
+            color: #0056b3;
+            text-align: center;
+        }
+        .eth-transaction-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .eth-transaction-item {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .eth-transaction-key {
+            color: #343a40;
+        }
+    
+        .proceed-button {
+            display: block;
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+    
+        .proceed-button:hover {
+            background-color: #218838; /* Darker green */
+            color: white;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+</div>
+<!-- Spinner End -->
+
+
+
+<!-- Brand Start -->
+<div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
+    <div class="container pb-2">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex">
+                <i class="bi bi-heart-half fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Be a Donor</h5>
+                    <span>Make a life-saving decision today.</span>
+                </div>
+            </div>
+            <a href="" class="h1 text-white mb-0">Organ<span class="text-dark">Donation</span></a>
+            <div class="d-flex">
+                <i class="bi bi-person-heart fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Need a Transplant?</h5>
+                    <span>Explore how we can help.</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
+            <a href="index.html" class="navbar-brand d-lg-none">
+                <h1 class="text-primary m-0">Lab<span class="text-dark">sky</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="{% url 'index' %}" class="nav-item nav-link ">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link ">About</a>
+                <a href="{% url 'donor_login' %}" class="nav-item nav-link ">Donor</a>
+                <a href="{% url 'recipient_login' %}" class="nav-item nav-link ">Recipient</a>
+                <a href="{% url 'hospital_login' %}" class="nav-item nav-link active">Hospital</a>
+                <a href="{% url 'admin_login' %}" class="nav-item nav-link">Admin</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a> 
+            </div>
+            <div class="ms-auto d-none d-lg-flex">
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Learn about organ donation on our Facebook">
+                    <i class="bi bi-heart-fill"></i> <!-- Represents organ donation -->
+                </a>
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Support organ donation awareness on Twitter">
+                    <i class="bi bi-heart-half"></i> <!-- Represents the giving and receiving aspects of organ donation -->
+                </a>
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Professional networking in organ donation on LinkedIn">
+                    <i class="bi bi-person-heart"></i> <!-- Represents specific focus on organs, custom icon assumed -->
+                </a>
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Watch our organ donation stories on YouTube">
+                    <i class="bi bi-life-preserver"></i> <!-- Represents life-saving aspects of organ donation -->
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+</div>
+<!-- Navbar End -->
+<div class="p-5">
+    <div class="eth-transaction-card ">
+        <h2 class="eth-transaction-title">Ethereum Transaction Details</h2>
+        {% if transaction_details.error %}
+            <p>{{ transaction_details.error }}</p>
+        {% else %}
+            <ul class="eth-transaction-list row">
+                {% for key, value in transaction_details.items %}
+                    <li class="eth-transaction-item col-6"><strong class="eth-transaction-key">{{ key }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="text-center">
+            <a href="{% url 'hospital_login' %}" class="proceed-button  col-6 mx-auto d-flex align-items-center justify-content-center">Proceed to Login</a>
+        </div>
+    </div>
+</div>
+<!-- Footer Start -->
+<div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-5 py-5">
+            <div class="col-lg-6 pe-lg-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="h1 text-primary mb-0">Life<span class="text-white">Link</span></h1>
+                </a>
+                <p><i class="fa fa-map-marker-alt me-2"></i> #2nd Floor, Siris Rd, Near L.B Nagar Metro Station Pillar No, A1662, Snehapuri Colony, Hyderabad, Telangana 500074</p>
+                <p><i class="fa fa-phone-alt me-2"></i>85558 87986</p>
+                <p><i class="fa fa-envelope me-2"></i>info@codebook.in</p>
+                <div class="d-flex mt-4">
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 ps-lg-5">
+                <div class="row g-5 justify-content-center">
+                    <div class="text-center">
+                        <h4 class="text-light mb-4">Quick Links</h4>
+                        <a class="btn btn-link" href="">About Us</a>
+                        <a class="btn btn-link" href="">Donor</a>
+                        <a class="btn btn-link" href="">Recipient</a>
+                        <a class="btn btn-link" href="">Hospital</a>
+                        <a class="btn btn-link" href="">Admin</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright bg-dark text-white-50 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">&copy; <a href="#">LifeLink</a>. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed and <a href="https://codebook.in"></a><br>Distributed by <a href="https://codebook.in" target="_blank">codebook</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'donor/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'donor/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'donor/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'donor/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'donor/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'donor/js/main.js' %}"></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+    swal({
+        title: "Warning!",
+        text: "{{ message }}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+    swal({
+        title: "Info :)",
+        text: "{{ message }}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+    swal({
+        title: "Error!",
+        text: "{{ message }}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+    swal({
+        title: "Success!",
+        text: "{{ message }}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>

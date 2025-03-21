@@ -1,0 +1,433 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>OrganDonation</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
+    
+    rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up2/1.0.4/jquery.counterup.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    
+    
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
+    <link href="{% static 'donor/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'donor/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+</div>
+<!-- Spinner End -->
+
+
+
+<!-- Brand Start -->
+<div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
+    <div class="container pb-2">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex">
+                <i class="bi bi-heart-half fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Be a Donor</h5>
+                    <span>Make a life-saving decision today.</span>
+                </div>
+            </div>
+            <a href="" class="h1 text-white mb-0">Organ<span class="text-dark">Donation</span></a>
+            <div class="d-flex">
+                <i class="bi bi-person-heart fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Need a Transplant?</h5>
+                    <span>Explore how we can help.</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
+            <a href="index.html" class="navbar-brand d-lg-none">
+                <h1 class="text-primary m-0">Lab<span class="text-dark">sky</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'donor_login' %}" class="nav-item nav-link">Donor</a>
+                <a href="{% url 'recipient_login' %}" class="nav-item nav-link">Recipient</a>
+                <a href="{% url 'hospital_login' %}" class="nav-item nav-link">Hospital</a>
+                <a href="{% url 'admin_login' %}" class="nav-item nav-link">Admin</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="ms-auto d-none d-lg-flex">
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Learn about organ donation on our Facebook">
+                    <i class="bi bi-heart-fill"></i> <!-- Represents organ donation -->
+                </a>
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Support organ donation awareness on Twitter">
+                    <i class="bi bi-heart-half"></i> <!-- Represents the giving and receiving aspects of organ donation -->
+                </a>
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Professional networking in organ donation on LinkedIn">
+                    <i class="bi bi-person-heart"></i> <!-- Represents specific focus on organs, custom icon assumed -->
+                </a>
+                <a class="btn btn-sm-square btn-primary ms-2" href="" title="Watch our organ donation stories on YouTube">
+                    <i class="bi bi-life-preserver"></i> <!-- Represents life-saving aspects of organ donation -->
+                </a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+</div>
+<!-- Navbar End -->
+
+<!-- Carousel Start -->
+<div class="container-fluid header-carousel px-0 mb-5">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{% static 'donor/img/img5.jpg' %}" alt="Organ Donation Awareness">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-lg-7 text-start">
+                                <h1 class="display-1 text-white animated slideInRight mb-3">Join the Lifesaving Mission</h1>
+                                <p class="mb-5 animated slideInRight">Be a part of our dedicated network of donors, hospitals, and recipients working together to save lives through organ donation. Every contribution counts in the journey to give others a second chance at life.</p>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Get Involved</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{% static 'donor/img/img5.jpg' %}" alt="Organ Donation Awareness">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-end">
+                            <div class="col-lg-7 text-end">
+                                <h1 class="display-1 text-white animated slideInLeft mb-3">Experience the Joy of Giving</h1>
+                                <p class="mb-5 animated slideInLeft">Discover how becoming an organ donor can transform lives and leave a lasting legacy. Join our community to learn more about how you can make a profound impact.</p>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<!-- Carousel End -->
+
+
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="row g-0">
+                    <div class="col-6">
+                        <img class="img-fluid" src="{% static 'donor/img/img1.jpg' %}" alt="Organ Donation Process">
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid" src="{% static 'donor/img/img2.webp' %}" alt="Donor and Recipient">
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid" src="{% static 'donor/img/img3.jpg' %}" alt="Hospital Organ Transplant Team">
+                    </div>
+                    <div class="col-6">
+                        <div class="bg-primary w-100 h-100 mt-n5 ms-n5 d-flex flex-column align-items-center justify-content-center">
+                            <div class="icon-box-light">
+                                <i class="bi bi-heart-fill text-dark"></i>
+                            </div>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">1000</h1>
+                            <small class="fs-5 text-white">Lives Saved</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="display-6 mb-4">A Commitment to Saving Lives Through Organ Donation</h1>
+                <p class="mb-4">At the heart of our mission is the transformative impact of organ donation. We connect donors, recipients, and hospitals to facilitate successful transplant operations, ensuring that each donor's gift truly counts.</p>
+                <div class="row g-4 g-sm-5 justify-content-center">
+                    <div class="col-sm-6">
+                        <div class="about-fact btn-square flex-column rounded-circle bg-primary ms-sm-auto">
+                            <p class="text-white mb-0">Successful Transplants</p>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">250</h1>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-start">
+                        <div class="about-fact btn-square flex-column rounded-circle bg-secondary me-sm-auto">
+                            <p class="text-white mb-0">Registered Donors</p>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">900</h1>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="about-fact mt-n130 btn-square flex-column rounded-circle bg-dark mx-sm-auto">
+                            <p class="text-white mb-0">Participating Hospitals</p>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">95</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Features Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-0 feature-row">
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-heart-fill text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Comprehensive Care</h5>
+                    <p class="mb-0">We provide end-to-end support for both donors and recipients, ensuring a seamless and caring experience throughout the donation process.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-people-fill text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Expert Medical Team</h5>
+                    <p class="mb-0">Our team of healthcare professionals specializes in organ transplants, working tirelessly to save lives with expert care and precision.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-shield-fill-check text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Trusted by Thousands</h5>
+                    <p class="mb-0">With thousands of successful organ transplants, our organization is a trusted name in saving and enhancing lives through organ donation.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-telephone-fill text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">24/7 Assistance</h5>
+                    <p class="mb-0">Our dedicated support team is available around the clock to assist donors and recipients with any questions or needs they may have.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features End -->
+
+
+
+
+<!-- Service Start -->
+<div class="container-fluid container-service py-5">
+    <div class="container pt-5">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="display-6 mb-3">Comprehensive Support for Organ Donation</h1>
+            <p class="mb-5">We ensure that all aspects of the organ donation process are handled with care and professionalism to maximize the impact of your generosity.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-heart-pulse text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Donor Evaluation</h5>
+                    <p class="mb-4">Thorough medical examinations to ensure donors are fit for donation and to maximize the success of transplants.</p>
+                    <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-lungs text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Recipient Matching</h5>
+                    <p class="mb-4">Advanced matching techniques to ensure donors' organs find the right recipients, improving outcomes and recovery times.</p>
+                    <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-virus text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Post-Transplant Care</h5>
+                    <p class="mb-4">Comprehensive follow-up care to monitor recipients' health and ensure the best possible outcomes after transplant surgery.</p>
+                    <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-capsule-pill text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Educational Workshops</h5>
+                    <p class="mb-4">Offering educational sessions to raise awareness about the benefits and importance of organ donation within the community.</p>
+                    <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Service End -->
+
+
+<!-- Footer Start -->
+<div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-5 py-5">
+            <div class="col-lg-6 pe-lg-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="h1 text-primary mb-0">Life<span class="text-white">Link</span></h1>
+                </a>
+                <p><i class="fa fa-map-marker-alt me-2"></i> #2nd Floor, Siris Rd, Near L.B Nagar Metro Station Pillar No, A1662, Snehapuri Colony, Hyderabad, Telangana 500074</p>
+                <p><i class="fa fa-phone-alt me-2"></i>85558 87986</p>
+                <p><i class="fa fa-envelope me-2"></i>info@codebook.in</p>
+                <div class="d-flex mt-4">
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 ps-lg-5">
+                <div class="row g-5 justify-content-center">
+                    <div class="text-center">
+                        <h4 class="text-light mb-4">Quick Links</h4>
+                        <a class="btn btn-link" href="">About Us</a>
+                        <a class="btn btn-link" href="">Donor</a>
+                        <a class="btn btn-link" href="">Recipient</a>
+                        <a class="btn btn-link" href="">Hospital</a>
+                        <a class="btn btn-link" href="">Admin</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright bg-dark text-white-50 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">&copy; <a href="#">LifeLink</a>. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed and <a href="https://codebook.in"></a><br>Distributed by <a href="https://codebook.in" target="_blank">codebook</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'donor/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'donor/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'donor/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'donor/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'donor/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'donor/js/main.js' %}"></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+    swal({
+        title: "Warning!",
+        text: "{{ message }}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+    swal({
+        title: "Info :)",
+        text: "{{ message }}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+    swal({
+        title: "Error!",
+        text: "{{ message }}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+    swal({
+        title: "Success!",
+        text: "{{ message }}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>
